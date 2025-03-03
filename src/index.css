@@ -4,8 +4,8 @@
 
 /* Set text direction to RTL for Arabic */
 html, body {
-  direction: rtl;
+  direction: ltr;
 }
-.ndfHFb-c4YZDc-Wrql6b{
-  display: none !important;
+iframe {
+  pointer-events: none;
 }
