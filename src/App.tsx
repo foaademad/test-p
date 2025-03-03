@@ -96,10 +96,13 @@ function App() {
                 >
 </iframe>  */}
 <iframe
-  src={`https://drive.google.com/viewerng/viewer?embedded=true&url=${viewingFile.url}`}
-  className="w-full h-full absolute inset-0 border-0"
-  frameBorder="0"
-  style={{ width: "100%", height: "100%" }}
+  src={`${viewingFile.url}#toolbar=0&navpanes=0&scrollbar=0`}
+  className="w-full h-screen"
+  style={{
+    width: "100vw",
+    height: "100vh",
+    border: "none",
+  }}
 ></iframe>
 
 
