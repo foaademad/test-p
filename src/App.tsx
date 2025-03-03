@@ -87,13 +87,27 @@ function App() {
             </div>
             <div className="flex-1 overflow-auto p-4">
               <div className="w-full h-full min-h-[60vh] relative">
-                <object 
-                  data={`${viewingFile.url}#toolbar=0&navpanes=0&scrollbar=0`}
-                  type="application/pdf"
-                  className="w-full h-full absolute inset-0"
+                {/* PDF Viewer using iframe with Google PDF Viewer fallback */}
+                <iframe
+                  src={`https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + viewingFile.url)}&embedded=true`}
+                  className="w-full h-full absolute inset-0 border-0"
+                  title={`PDF Viewer - ${sampleFiles.find(f => f.id === viewingFile.id)?.name}`}
+                  frameBorder="0"
                 >
-                  <p>يبدو أن متصفحك لا يدعم عرض ملفات PDF. يمكنك تنزيل الملف من <a href={viewingFile.url}>هنا</a>.</p>
-                </object>
+                </iframe>
+                
+                {/* Fallback download option */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 opacity-0 hover:opacity-100 transition-opacity">
+                  <p className="text-center mb-4">إذا واجهت مشكلة في عرض الملف:</p>
+                  <a
+                    href={viewingFile.url}
+                    download={sampleFiles.find(f => f.id === viewingFile.id)?.name}
+                    className="flex items-center justify-center gap-2 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors"
+                  >
+                    <Download size={18} />
+                    <span>تنزيل الملف</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
