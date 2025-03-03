@@ -3,14 +3,14 @@ import { FileText, Eye, Download } from 'lucide-react';
 
 // Sample file data with local PDF files
 const sampleFiles = [
-  { id: 1, name: 'document.pdf', date: '2025-05-15', size: '2.5 MB', url: '/files/1.pdf' },
-  { id: 2, name: 'report1.pdf', date: '2025-05-14', size: '1.2 MB', url: '/files/2.pdf' },
-  { id: 3, name: 'manual.pdf', date: '2025-05-13', size: '3.7 MB', url: '/files/3.pdf' },
-  { id: 4, name: 'presentation.pdf', date: '2025-05-12', size: '5.1 MB', url: '/files/4.pdf' },
-  { id: 5, name: 'report.pdf', date: '2025-05-11', size: '1.8 MB', url: '/files/5.pdf' },
-  { id: 6, name: 'guide.pdf', date: '2025-05-10', size: '15.3 MB', url: '/files/6.pdf' },
-  { id: 7, name: 'document2.pdf', date: '2025-05-09', size: '4.2 MB', url: '/files/7.pdf' },
-  { id: 8, name: 'whitepaper.pdf', date: '2025-05-08', size: '7.9 MB', url: '/files/8.pdf' },
+  { id: 1, name: 'document.pdf', date: '2025-05-15', size: '2.5 MB', url: '/files/2.pdf' },
+  { id: 2, name: 'report1.pdf', date: '2025-05-14', size: '1.2 MB', url: '/files/3.pdf' },
+  { id: 3, name: 'manual.pdf', date: '2025-05-13', size: '3.7 MB', url: '/files/4.pdf' },
+  { id: 4, name: 'presentation.pdf', date: '2025-05-12', size: '5.1 MB', url: '/files/5.pdf' },
+  { id: 5, name: 'report.pdf', date: '2025-05-11', size: '1.8 MB', url: '/files/6.pdf' },
+  { id: 6, name: 'guide.pdf', date: '2025-05-10', size: '15.3 MB', url: '/files/7.pdf' },
+  { id: 7, name: 'document2.pdf', date: '2025-05-09', size: '4.2 MB', url: '/files/8.pdf' },
+  { id: 8, name: 'whitepaper.pdf', date: '2025-05-08', size: '7.9 MB', url: '/files/9.pdf' },
 ];
 
 function App() {
@@ -87,13 +87,12 @@ function App() {
             </div>
             <div className="flex-1 overflow-auto p-4">
               <div className="w-full h-full min-h-[60vh] relative">
-                <object 
-                  data={`${viewingFile.url}#toolbar=0&navpanes=0&scrollbar=0`}
-                  type="application/pdf"
-                  className="w-full h-full absolute inset-0"
-                >
-                  <p>يبدو أن متصفحك لا يدعم عرض ملفات PDF. يمكنك تنزيل الملف من <a href={viewingFile.url}>هنا</a>.</p>
-                </object>
+                <iframe 
+                  src={`${viewingFile.url}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                  className="w-full h-full min-h-[60vh] border-0" 
+                  title="File preview"
+                  sandbox="allow-same-origin allow-scripts"
+                />
               </div>
             </div>
           </div>
