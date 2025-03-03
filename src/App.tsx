@@ -17,14 +17,8 @@ function App() {
   const [viewingFile, setViewingFile] = useState<{ id: number; url: string } | null>(null);
 
   const handleViewFile = (id: number, url: string) => {
-    // Check if the device is a mobile or tablet
-    const isMobileOrTablet = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (isMobileOrTablet) {
-      // Open the file in a new tab for mobile devices
-      window.open(url, '_blank');
-    } else {
-      setViewingFile({ id, url });
-    }
+    // Always open the file in the modal regardless of device type
+    setViewingFile({ id, url });
   };
 
   const handleCloseViewer = () => {
