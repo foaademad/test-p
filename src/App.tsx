@@ -87,14 +87,29 @@ function App() {
             </div>
             <div className="flex-1 overflow-auto p-4">
               <div className="w-full h-full min-h-[60vh] relative">
-                {/* PDF Viewer using iframe with Google PDF Viewer fallback */}
-                <iframe
-                  src={`https://docs.google.com/gview?url=${encodeURIComponent(window.location.origin + viewingFile.url)}&embedded=true`}
-                  className="w-full h-full absolute inset-0 border-0"
-                  title={`PDF Viewer - ${sampleFiles.find(f => f.id === viewingFile.id)?.name}`}
-                  frameBorder="0"
-                >
-              </iframe>  
+              <iframe
+  src={`https://docs.google.com/gview?url=${encodeURIComponent(window.location.origin + viewingFile.url)}&embedded=true`}
+  className="w-full h-full absolute inset-0 border-0"
+  title={`PDF Viewer - ${sampleFiles.find(f => f.id === viewingFile.id)?.name}`}
+  frameBorder="0"
+  scrolling="no"
+  sandbox="allow-same-origin allow-scripts"
+  allowFullScreen
+  onLoad={() => {
+    // حاول إخفاء العناصر غير المرغوب فيها باستخدام JavaScript
+    const iframe = document.querySelector('iframe');
+    if (iframe) {
+      const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+      if (iframeDocument) {
+        const exstandElement = iframeDocument.querySelector('.exstand'); // استبدل بالاختيار المناسب
+        if (exstandElement) {
+          exstandElement.style.display = 'none';
+        }
+      }
+    }
+  }}
+>
+</iframe>  
 
 
 
