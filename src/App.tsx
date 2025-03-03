@@ -17,7 +17,14 @@ function App() {
   const [viewingFile, setViewingFile] = useState<{ id: number; url: string } | null>(null);
 
   const handleViewFile = (id: number, url: string) => {
-    setViewingFile({ id, url });
+    // Check if the device is a mobile or tablet
+    const isMobileOrTablet = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobileOrTablet) {
+      // Open the file in a new tab for mobile devices
+      window.open(url, '_blank');
+    } else {
+      setViewingFile({ id, url });
+    }
   };
 
   const handleCloseViewer = () => {
@@ -87,13 +94,16 @@ function App() {
             </div>
             <div className="flex-1 overflow-auto p-4">
               <div className="w-full h-full min-h-[60vh] relative">
-                <object 
-                  data={`${viewingFile.url}#toolbar=0&navpanes=0&scrollbar=0`}
-                  type="application/pdf"
+                <iframe 
+                  src={`${viewingFile.url}#toolbar=0&navpanes=0&scrollbar=0`}
                   className="w-full h-full absolute inset-0"
+                  title="PDF Viewer"
                 >
-                  <p>يبدو أن متصفحك لا يدعم عرض ملفات PDF. يمكنك تنزيل الملف من <a href={viewingFile.url}>هنا</a>.</p>
-                </object>
+                  <p>
+                    يبدو أن متصفحك لا يدعم عرض ملفات PDF. يمكنك تنزيل الملف من 
+                    <a href={viewingFile.url} target="_blank" rel="noopener noreferrer"> هنا</a>.
+                  </p>
+                </iframe>
               </div>
             </div>
           </div>
