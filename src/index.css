@@ -4,8 +4,5 @@
 
 /* Set text direction to RTL for Arabic */
 html, body {
-  direction: ltr;
-}
-iframe {
-  pointer-events: none;
+  direction: rtl;
 }
