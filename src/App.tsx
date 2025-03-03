@@ -96,11 +96,11 @@ function App() {
                 >
 </iframe>  */}
 <iframe
-  src={`${viewingFile.url}#toolbar=0&navpanes=0&scrollbar=0`}
+  src={`https://docs.google.com/gview?url=${viewingFile.url}&embedded=true`}
   className="w-full h-screen"
   style={{
-    width: "100vw",
-    height: "100vh",
+    width: "100%",
+    height: "100%",
     border: "none",
   }}
 ></iframe>
