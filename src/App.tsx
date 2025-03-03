@@ -95,12 +95,13 @@ function App() {
                   frameBorder="0"
                 >
 </iframe>  */}
-<embed
-  src={`${viewingFile.url}#toolbar=0&navpanes=0&scrollbar=0`}
+<iframe
+  src={`https://drive.google.com/viewerng/viewer?embedded=true&url=${viewingFile.url}`}
   className="w-full h-full absolute inset-0 border-0"
-  type="application/pdf"
+  frameBorder="0"
   style={{ width: "100%", height: "100%" }}
-/>
+></iframe>
+
 
                 
               
