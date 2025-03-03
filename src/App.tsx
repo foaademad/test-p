@@ -95,13 +95,12 @@ function App() {
                   frameBorder="0"
                 >
 </iframe>  */}
-<iframe
+<embed
   src={`${viewingFile.url}#toolbar=0&navpanes=0&scrollbar=0`}
   className="w-full h-full absolute inset-0 border-0"
-  title={`PDF Viewer - ${sampleFiles.find(f => f.id === viewingFile.id)?.name}`}
-  frameBorder="0"
+  type="application/pdf"
   style={{ width: "100%", height: "100%" }}
-></iframe>
+/>
 
                 
               
