@@ -88,13 +88,21 @@ function App() {
             <div className="flex-1 overflow-auto p-4">
               <div className="w-full h-full min-h-[60vh] relative">
                 {/* PDF Viewer using iframe with Google PDF Viewer fallback */}
-                <iframe
+                {/* <iframe
                   src={`https://docs.google.com/gview?url=${encodeURIComponent(window.location.origin + viewingFile.url)}&embedded=true`}
                   className="w-full h-full absolute inset-0 border-0"
                   title={`PDF Viewer - ${sampleFiles.find(f => f.id === viewingFile.id)?.name}`}
                   frameBorder="0"
                 >
-</iframe> 
+</iframe>  */}
+<iframe
+  src={`${viewingFile.url}#toolbar=0&navpanes=0&scrollbar=0`}
+  className="w-full h-full absolute inset-0 border-0"
+  title={`PDF Viewer - ${sampleFiles.find(f => f.id === viewingFile.id)?.name}`}
+  frameBorder="0"
+  style={{ width: "100%", height: "100%" }}
+></iframe>
+
                 
               
               </div>
