@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Set text direction to RTL for Arabic */
+html, body {
+  direction: rtl;
+}
