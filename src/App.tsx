@@ -17,7 +17,6 @@ function App() {
   const [viewingFile, setViewingFile] = useState<{ id: number; url: string } | null>(null);
 
   const handleViewFile = (id: number, url: string) => {
-    // Always open the file in the modal regardless of device type
     setViewingFile({ id, url });
   };
 
@@ -88,16 +87,13 @@ function App() {
             </div>
             <div className="flex-1 overflow-auto p-4">
               <div className="w-full h-full min-h-[60vh] relative">
-                <iframe 
-                  src={`${viewingFile.url}#toolbar=0&navpanes=0&scrollbar=0`}
+                <object 
+                  data={`${viewingFile.url}#toolbar=0&navpanes=0&scrollbar=0`}
+                  type="application/pdf"
                   className="w-full h-full absolute inset-0"
-                  title="PDF Viewer"
                 >
-                  <p>
-                    يبدو أن متصفحك لا يدعم عرض ملفات PDF. يمكنك تنزيل الملف من 
-                    <a href={viewingFile.url} target="_blank" rel="noopener noreferrer"> هنا</a>.
-                  </p>
-                </iframe>
+                  <p>يبدو أن متصفحك لا يدعم عرض ملفات PDF. يمكنك تنزيل الملف من <a href={viewingFile.url}>هنا</a>.</p>
+                </object>
               </div>
             </div>
           </div>
